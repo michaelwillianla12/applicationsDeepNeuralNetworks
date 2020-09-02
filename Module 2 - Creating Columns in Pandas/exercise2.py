@@ -45,3 +45,5 @@ pd.set_option('display.max_rows', 0)
 df = pd.concat([df, dummiesI], axis=1)
 
 display(df)
+
+print(".")

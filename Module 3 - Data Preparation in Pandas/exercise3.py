@@ -8,9 +8,10 @@ df['date'] = pd.to_datetime(df['time'], errors='coerce')
 
 
 first = df.set_index('date').resample('d')["value"].first().dropna(how='all').rename('starting')
-last = df.set_index('date').resample('d')["value"].last().dropna(how='all').rename('max')
+maximun = df.set_index('date').resample('d')["value"].max().dropna(how='all').rename('max')
 minimun = df.set_index('date').resample('d')["value"].min().dropna(how='all').rename('min')
-maximun = df.set_index('date').resample('d')["value"].max().dropna(how='all').rename('ending')
+last = df.set_index('date').resample('d')["value"].last().dropna(how='all').rename('ending')
+
 df = pd.concat([first, maximun, minimun, last], axis=1).reset_index()
 
 print(df)
